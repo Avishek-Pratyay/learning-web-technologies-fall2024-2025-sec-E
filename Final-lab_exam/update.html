@@ -1,0 +1,39 @@
+
+<html>
+    <head></head>
+    <body>
+        <fieldset>
+            <legend>All Employers</legend>
+            <form method="post" action="update.php">
+                <table border="1">
+                    <tr>
+                        <th>Name</th>
+                        <th>Company Name</th>
+                        <th>Contact No</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Actions</th>
+                    </tr>
+                    <?php
+                    include_once 'database.php';
+                    $con = getConnection();
+                    $sql = "SELECT * FROM employer_info";
+                    $result = mysqli_query($con, $sql);
+    
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        echo "<td><input type='text' name='name[{$row['id']}]' value='{$row['name']}'></td>";
+                        echo "<td><input type='text' name='companyName[{$row['id']}]' value='{$row['companyName']}'></td>";
+                        echo "<td><input type='text' name='contactNo[{$row['id']}]' value='{$row['contactNo']}'></td>";
+                        echo "<td><input type='text' name='userName[{$row['id']}]' value='{$row['userName']}'></td>";
+                        echo "<td><input type='password' name='password[{$row['id']}]' value='{$row['password']}'></td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </table>
+                <br>
+                <input type="submit" name="update" value="Update Employers">
+            </form>
+        </fieldset>
+    </body>
+</html>
