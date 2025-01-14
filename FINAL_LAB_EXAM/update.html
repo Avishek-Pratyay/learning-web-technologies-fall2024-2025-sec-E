@@ -1,0 +1,43 @@
+
+<html>
+    <head></head>
+    <body>
+        <fieldset>
+            <form method="post" action="update.php" onsubmit="return f2()">
+                <table border="1">
+                    <tr>
+                        <th>Name</th>
+                        <th>Contact No</th>
+                        <th>User Name</th>
+                        <th>Password</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="name" name="name" value=""></td>
+                        <td><input type="number" id="contactNo" name="contactNo" value=""></td>
+                        <td><input type="text" id="userName" name="userName" value=""></td>
+                        <td><input type="password" id="password" name="password" value=""></td>
+                    </tr>
+                </table>
+                <br>
+                <input type="submit" name="update" value="Update Employers" onclick="f2()"><br>
+            </form>
+        </fieldset>
+        <p id="msg"></p>
+    <script>
+        function f2(){
+                let name = document.getElementById('name').value;
+                let contactNo = document.getElementById('contactNo').value;
+                let userName = document.getElementById('userName').value;
+                let password = document.getElementById('password').value;
+                if(userName == ""|| contactNo=="" || userName=="" || password==""){
+                    document.getElementById('msg').innerHTML = "please fill all the fields.....";
+                    document.getElementById('msg').style.color = "red";
+
+                }else{
+                    document.getElementById('msg').innerHTML = "";
+                }
+
+            }
+    </script>
+    </body>
+</html>
